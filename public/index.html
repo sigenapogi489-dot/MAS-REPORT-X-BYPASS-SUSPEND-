@@ -1,22 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>autosharer</title>
-    <meta property="og:title" content="autosharer">
-    <meta property="og:description" content="Just a facebook post auto sharer made by komachi">
-    <meta property="og:site_name" content="autosharer">
-    <meta property="og:url" content="https://sumi.asia/">
-    <link rel="icon" href="img/as.png" type="image/x-icon">
-    <meta name="keywords" content="FB, Facebook, Auto Sharer, autosharer, auto share fb, autosharer fb, fb auto sharer, fb automation, fb automatically share, autosharer by zark">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="js/main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Auto Share</title>
+    <link rel="icon" href="https://i.ibb.co/d0KCWCMt/image.png">
+    <meta property="og:title" content="FB Auto Share Tool">
+    <meta property="og:description" content="Automatically share posts to your Facebook profile with ease">
+    <meta property="og:image" content="hhttps://i.ibb.co/d0KCWCMt/image.png">
+    <meta property=" og:url" content="https://fb-autoshare-82la.onrender.com/">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <header>
+        <div class="container">
+            <h1 class="logo"><i class="fab fa-facebook"></i> FB<span>Auto Share</span></h1>
+            <!-- <img src="https://i.ibb.co/d0KCWCMt/image.png"></img> -->
+            <div class="theme-switch">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </header>
 
-</body>
+    <main>
+        <div class="container">
+            <div class="card guide-card">
+                <h2><i class="fas fa-book-open"></i> How to Get Your Facebook State</h2>
+                <button id="toggleGuide" class="btn btn-secondary"><i class="fas fa-chevron-down"></i> Show
+                    Guide</button>
 
-</html>iii
+                <div id="guideContent" class="guide-content hidden">
+                    <div class="guide-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Download Kiwi Browser</h3>
+                                <p>Kiwi Browser is required as it's the only mobile browser with extension support.</p>
+                                <a href="https://d.apkpure.com/b/APK/com.kiwibrowser.browser?version=latest"
+                                    class="btn btn-outline" target="_blank">
+                                    <i class="fas fa-download"></i> Download Kiwi Browser
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Download the C3C FBstate Extension</h3>
+                                <p>This extension will help you extract your Facebook state.</p>
+                                <a href="https://github.com/c3cbot/c3c-fbstate/archive/refs/tags/1.5.zip"
+                                    class="btn btn-outline" target="_blank">
+                                    <i class="fas fa-download"></i> Download C3C Extension
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Install the Extension in Kiwi Browser</h3>
+                                <ol class="sub-steps">
+                                    <li>Open Kiwi Browser</li>
+                                    <li>Tap on the three dots (<i class="fas fa-ellipsis-v"></i>) in the top right
+                                        corner</li>
+                                    <li>Select "Extensions"</li>
+                                    <li>Enable "Developer mode" if prompted</li>
+                                    <li>Tap on the "+" button or "From file" option</li>
+                                    <li>Select the downloaded ZIP file (c3c-fbstate-1.5.zip)</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Access Your Facebook State</h3>
+                                <ol class="sub-steps">
+                                    <li>Open Facebook in Kiwi Browser (preferably use a test account)</li>
+                                    <li>Log in to your Facebook account</li>
+                                    <li>Tap on the three dots (<i class="fas fa-ellipsis-v"></i>) again</li>
+                                    <li>Scroll down and tap on "C3C FBSTATE Utility"</li>
+                                    <li>Click "Copy to Clipboard"</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Use Your Facebook State</h3>
+                                <ol class="sub-steps">
+                                    <li>Return to this page</li>
+                                    <li>Paste the copied FBstate value into the "Facebook State" field below</li>
+                                    <li>Enter the URL you want to share</li>
+                                    <li>Set the desired share count and time interval</li>
+                                    <li>Click "Start Sharing" to begin the process</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-share-nodes"></i> Facebook Auto Share Tool</h2>
+                <p class="description">Automatically share posts to your Facebook profile with ease</p>
+
+                <form id="shareForm">
+                    <div class="form-group">
+                        <label for="fbstate"><i class="fas fa-key"></i> Facebook State (JSON):</label>
+                        <textarea id="fbstate" rows="5"
+                            placeholder='[{"key":"c_user","value":"..."},{"key":"xs","value":"..."}...]'
+                            style="resize: none;"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shareUrl"><i class="fas fa-link"></i> URL to Share:</label>
+                        <input type="url" id="shareUrl" placeholder="https://facebook.com/....">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="shareCount"><i class="fas fa-hashtag"></i> Share Count:</label>
+                            <!-- <input type="number" id="shareCount" min="1" max="10000" value="1"> -->
+                            <input type="number" id="shareCount" min="1" value="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeInterval"><i class="fas fa-clock"></i> Time Interval (ms):</label>
+                            <input type="number" id="timeInterval" min="2000" step="1000" value="2000">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-rocket"></i> Start Sharing</button>
+                </form>
+            </div>
+
+            <div class="card results-card hidden" id="resultsCard">
+                <h3><i class="fas fa-chart-simple"></i> Results</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <p id="progressText">0/0 shares completed</p>
+                <div id="logContainer" class="log-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FB Auto Share. Developed by
+                <a href="https://facebook.com/joshg101" target="_blank" rel="noopener noreferrer">
+                    <strong> Deku</strong>
+                </a>
+            </p>
