@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryson Share Boost</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Favicon links -->
+    <link rel="icon" href="https://i.imgur.com/OF3LtjK.jpeg" type="image/jpeg">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="cyberpunk-bg"></div>
+    <div class="grid-lines"></div>
+    
+    <div class="theme-toggle">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </div>
+    
+    <div class="menu-icon" id="menu-icon">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <div class="side-menu" id="side-menu">
+        <div class="menu-header">
+            <i class="fas fa-times" id="close-menu"></i>
+            <h3>Bryson S E E C Menu</h3>
+        </div>
+        <ul>
+            <li><a href="https://appstate-tutorial.vercel.app/" target="_blank"><i class="fas fa-terminal"></i> How to get appstate Guide</a></li>
+            <li><a href="https://faq-w1dq.onrender.com" target="_blank"><i class="fas fa-question-circle"></i> FAQ</a></li>
+            <li><a href="https://post-and-noti-1.onrender.com" target="_blank"><i class="fas fa-bell"></i> Post & Notifications</a></li>
+            <li><a href="#" id="contact-admin"><i class="fas fa-headset"></i> Contact Admin</a></li>
+            <li><a href="#" id="show-history"><i class="fas fa-clock-rotate-left"></i> Share History</a></li>
+            <li><a href="https://info-owner.vercel.app/" target="_blank"><i class="fas fa-user-secret"></i> Owner Information</a></li>
+        </ul>
+    </div>
+    
+    <!-- Password Modal -->
+    <div class="modal" id="password-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-lock"></i> Enter Password</h2>
+            <div class="form-group">
+                <input type="password" id="history-password" placeholder="Enter password to access history">
+                <div id="password-error" style="color: var(--error-color); margin-top: 10px; display: none;">Incorrect password. Try again.</div>
+            </div>
+            <button type="button" id="submit-password" class="submit-btn"><i class="fas fa-key"></i> Submit</button>
+        </div>
+    </div>
+    
+    <div class="wrapper-container">
+        <!-- Welcome Section -->
+        <div class="container welcome-container" id="welcome-section">
+            <div class="welcome-content">
+                <img src="https://i.imgur.com/iTrX4Oi.jpeg" alt="Bryson Share Boost Logo" class="welcome-logo">
+                <h1 class="welcome-title neon-text">WELCOME TO BRYSON SHARE BOOST</h1>
+                <div class="welcome-message">
+                    <p>Prepare to amplify your Facebook presence with our cutting-edge share boosting technology.</p>
+                    <p>This powerful tool will help you maximize your post reach and engagement like never before.</p>
+                </div>
+                <div class="welcome-features">
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Lightning-fast sharing</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure and private</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Boost engagement</span>
+                    </div>
+                </div>
+                <button class="welcome-button" id="start-boosting">
+                    <i class="fas fa-rocket"></i> START BOOSTING NOW
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content (initially hidden) -->
+        <div class="main-content" id="main-content" style="display: none;">
+            <div class="container intro-container">
+                <img src="https://i.imgur.com/OF3LtjK.jpeg" alt="Bryson Share Boost" class="title-image">
+                <h4>A user-friendly automated website that utilizes your browser's cookies to streamline the process of sharing posts on Facebook using the provided URL.</h4>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="form-wrapper">
+                <form onsubmit="submitForm(event)" class="form-container">
+                    <div class="form-item">
+                        <label for="cookies"><i class="fas fa-cookie-bite"></i> APPSTATE:</label>
+                        <textarea id="cookies" name="cookie" placeholder="Enter your Facebook appstate..." rows="4"></textarea>
+                    </div>
+                    <div class="form-item checkbox-item">
+                        <input type="checkbox" id="enable-link" checked>
+                        <label for="enable-link"><i class="fas fa-link"></i> LINK:</label>
+                        <input type="text" id="urls" name="url" placeholder="Enter Facebook post URL...">
+                    </div>
+                    <div class="form-item checkbox-item">
+                        <input type="checkbox" id="enable-limit" checked>
+                        <label for="enable-limit"><i class="fas fa-bullseye"></i> LIMIT:</label>
