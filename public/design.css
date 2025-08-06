@@ -1,0 +1,124 @@
+/* MAIN STYLES */
+
+
+* {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Afacad";
+}
+
+body {
+        min-height: 100vh;
+        background: #EAECF8;
+        padding: 20px;
+}
+
+::-moz-selection {
+        color: #eee;
+        background: #94B4FF;
+}
+
+::selection {
+        color: #eee;
+        background: #94B4FF;
+}
+
+.container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+}
+
+
+/* CARD */
+
+
+.card {
+    width: 270px;
+    border-radius: 20px;
+    background: #f6f7ff;
+    border: solid 1px #BFC3DB;
+    padding: 20px;
+    box-shadow: 0 1px 18px rgba(0, 0, 0, 0.1);
+}
+
+
+/* CARD STYLES (INFO & WARN) */
+
+/*
+.card-info {
+        border-right: solid 2px #A48A93;
+        border-bottom: solid 1.5px #A48A93;
+}
+*/
+
+.card-info h3 {
+        color: #94B4FF;
+        font-size: 17px;
+}
+
+.card-info p {
+        color: #70798E;
+        font-size: 13px;
+        margin-top: 10px;
+}
+
+
+/* CARD STYLES (FORM) */
+
+
+.card-form label {
+        display: block;
+        color: #94B4FF;
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-size: 14px;
+}
+
+.card-form label>span {
+        margin-left: 5px;
+        padding: 3px 5px;
+        font-size: 11px;
+        border-radius: 5px;
+        color: #fff;
+        background: #94B4FF;
+}
+
+.card-form input,
+.card-form select {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: none;
+        border: solid 1px #BFC3DB;
+        color: #656A80;
+        font-size: 14px;
+        outline: none;
+}
+
+.card-form input::placeholder,
+.card-form select {
+        color: #8B8AA4;
+}
+
+.card-form select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+}
+
+.card-form select::-ms-expand {
+        display: none;
+}
+
+.card-form button {
+        width: 100%;
+        padding: 10px;
+        background: #84A5F2;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 16px;
