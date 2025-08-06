@@ -1,0 +1,124 @@
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: var(--background);
+}
+
+.dark,
+:root {
+    --primary: #1877f2;
+}
+
+body {
+    color: var(--text);
+}
+
+:root {
+    --primary-dark: #0e62c7;
+}
+
+:root {
+    --primary-light: #4893f5;
+}
+
+.dark,
+:root {
+    --secondary: #42b72a;
+}
+
+:root,
+.dark {
+    --secondary-dark: #36a420;
+}
+
+body {
+    line-height: 1.6;
+}
+
+:root {
+    --accent: #e9ebee;
+}
+
+:root {
+    --text: #1c1e21;
+}
+
+:root {
+    --text-light: #606770;
+}
+
+:root {
+    --background: #f0f2f5;
+}
+
+:root {
+    --card-bg: #fff;
+}
+
+body {
+    transition: var(--transition);
+}
+
+:root {
+    --border: #dddfe2;
+}
+
+:root {
+    --shadow: 0 .020833333in 8px rgba(0, 0, 0, .1);
+}
+
+:root {
+    --transition: all .3s ease;
+}
+
+:root {
+    --success: #42b72a;
+}
+
+* {
+    margin-left: 0;
+}
+
+header {
+    background-color: var(--primary);
+}
+
+:root {
+    --error: #fa3e3e;
+}
+
+:root {
+    --warning: #f7b928;
+}
+
+:root {
+    --radius: 8px;
+}
+
+[class~=container],
+* {
+    margin-bottom: 0;
+}
+
+header {
+    color: white;
+}
+
+.dark {
+    --primary-dark: #166fe5;
+}
+
+.dark {
+    --primary-light: #4080ff;
+}
+
+* {
+    margin-right: 0;
+}
+
+.dark {
+    --accent: #3a3b3c;
+}
+
