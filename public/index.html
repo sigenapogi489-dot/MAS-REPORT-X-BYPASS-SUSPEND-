@@ -7,16 +7,16 @@
     <title>Clark Spam Share</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #fd4766;         /* Strawberry red */
-            --primary-dark: #e53245;    /* Darker strawberry */
-            --accent: #ff8fa3;          /* Soft pink accent */
-            --background: #fff0f5;      /* Strawberry milk background */
-            --card-bg: #fff5fa;         /* Card background */
-            --light: #fff7fb;           /* Lightest pink */
-            --gray: #b9939b;            /* Muted pinkish gray */
+            --primary: #fd4766;
+            --primary-dark: #e53245;
+            --accent: #ff8fa3;
+            --background: #fff0f5;
+            --card-bg: #fff5fa;
+            --light: #fff7fb;
+            --gray: #b9939b;
             --success: #10b981;
             --error: #ef4444;
         }
@@ -32,6 +32,7 @@
             min-height: 100vh;
             padding: 1rem;
             line-height: 1.5;
+            font-weight: bold; /* All text bold */
         }
         #loader {
             position: fixed;
@@ -59,7 +60,7 @@
             margin-top: 1.5rem;
             font-size: 1.25rem;
             color: var(--primary-dark);
-            font-weight: 600;
+            font-weight: bold;
             letter-spacing: 1px;
             text-shadow: 0 2px 8px #fd476630;
         }
@@ -67,7 +68,7 @@
             max-width: 800px;
             margin: 0 auto;
             width: 100%;
-            display: none; /* Hide until loading is done */
+            display: none;
         }
         .header {
             text-align: center;
@@ -75,7 +76,7 @@
         }
         .logo {
             font-size: 2.5rem;
-            font-weight: 700;
+            font-weight: bold;
             margin-bottom: 0.5rem;
             background: linear-gradient(90deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
@@ -87,24 +88,42 @@
         .subtitle {
             color: var(--gray);
             font-size: 1rem;
-            font-weight: 400;
+            font-weight: bold;
         }
         .owner {
             color: var(--gray);
             font-size: 0.875rem;
             margin-top: 0.5rem;
+            font-weight: bold;
         }
         .card {
             background: linear-gradient(135deg, var(--card-bg), #ffe4ee 100%);
             border-radius: 0.75rem;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px -2px #e5324540, 0 2px 4px -1px #fd476640;
-            border: 1px solid #ffb3c6;
+            box-shadow: 0 0 20px 2px #fd4766, 0 4px 12px -2px #e5324540;
+            border: 2px solid #fd4766;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:before {
+            content: "";
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border-radius: 0.85rem;
+            pointer-events: none;
+            border: 2px solid #ff8fa3;
+            box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355;
+            animation: lightingMove 2s linear infinite;
+        }
+        @keyframes lightingMove {
+            0% { box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355; }
+            50% { box-shadow: 0 0 48px 12px #fd4766aa, 0 0 80px 24px #ff8fa3aa; }
+            100% { box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355; }
         }
         .card-title {
             font-size: 1.25rem;
-            font-weight: 600;
+            font-weight: bold;
             margin-bottom: 1rem;
             color: var(--primary-dark);
             letter-spacing: 1px;
@@ -115,7 +134,7 @@
         .form-label {
             display: block;
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: bold;
             margin-bottom: 0.5rem;
             color: var(--gray);
         }
@@ -127,6 +146,7 @@
             background-color: #fff7fb;
             color: #3a1c1c;
             font-size: 1rem;
+            font-weight: bold;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         .form-input:focus {
@@ -142,7 +162,7 @@
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
             border: none;
@@ -161,7 +181,7 @@
             margin-top: 1rem;
             display: none;
             text-align: center;
-            font-weight: 500;
+            font-weight: bold;
         }
         .result.success {
             background-color: #f0fff4;
@@ -182,11 +202,13 @@
             margin-bottom: 0.75rem;
             border: 1px solid #ffb3c6;
             font-size: 0.875rem;
+            font-weight: bold;
         }
         .process-item .status {
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.25rem;
+            font-weight: bold;
         }
         .process-item .progress {
             height: 6px;
@@ -341,7 +363,6 @@
         async function linkOfProcessing() {
             try {
                 const container = document.getElementById('processing');
-                const processContainer = document.getElementById('process-container');
                 const initialResponse = await fetch('/total');
                 if (!initialResponse.ok) {
                     throw new Error(`Failed to fetch: ${initialResponse.status}`);
@@ -398,7 +419,6 @@
                 console.error('Error fetching processes:', error);
             }
         }
-        // Initial load of processes
         document.addEventListener('DOMContentLoaded', () => {
             linkOfProcessing();
         });
