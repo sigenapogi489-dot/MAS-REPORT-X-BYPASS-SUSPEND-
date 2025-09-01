@@ -221,11 +221,14 @@
     </style>
 </head>
 <body>
+    <!-- Background Music Loop (autoplay, hidden) -->
+    <audio id="bg-music" src="zark.mp3" autoplay loop style="display:none;"></audio>
+    
     <div class="wrapper">
         <header class="header">
-            <h1 class="logo">Zark Spam Share</h1>
+            <h1 class="logo">Clark Spam Share</h1>
             <p class="subtitle">Automate Facebook post sharing using your browser's cookies</p>
-            <p class="owner">Created by Zark</p>
+            <p class="owner">Created by Clark</p>
         </header>
 
         <div class="card">
@@ -261,6 +264,18 @@
     </div>
 
     <script>
+        // Play music on first user click if blocked by browser
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('bg-music');
+            function startMusic() {
+                if (audio.paused) {
+                    audio.play();
+                }
+                document.removeEventListener('click', startMusic);
+            }
+            document.addEventListener('click', startMusic);
+        });
+
         async function submitForm(event) {
             event.preventDefault();
             const result = document.getElementById('result');
@@ -397,4 +412,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
