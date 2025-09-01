@@ -32,7 +32,7 @@
             min-height: 100vh;
             padding: 1rem;
             line-height: 1.5;
-            font-weight: bold; /* All text bold */
+            font-weight: bold;
         }
         #loader {
             position: fixed;
@@ -96,30 +96,42 @@
             margin-top: 0.5rem;
             font-weight: bold;
         }
+
+        /* Animated Lighting Border Box */
         .card {
             background: linear-gradient(135deg, var(--card-bg), #ffe4ee 100%);
             border-radius: 0.75rem;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 0 20px 2px #fd4766, 0 4px 12px -2px #e5324540;
-            border: 2px solid #fd4766;
+            border: 2px solid transparent;
             position: relative;
             overflow: hidden;
         }
-        .card:before {
+        .card::before {
             content: "";
             position: absolute;
             top: -4px; left: -4px; right: -4px; bottom: -4px;
             border-radius: 0.85rem;
             pointer-events: none;
-            border: 2px solid #ff8fa3;
+            /* Lighting gradient line with moving shimmer */
+            background: linear-gradient( 
+                120deg,
+                #fd4766 0%,
+                #ff8fa3 20%,
+                #fff0f5 40%,
+                #ff8fa3 60%,
+                #fd4766 100%
+            );
+            opacity: 0.7;
+            z-index: 0;
+            border: 2px solid transparent;
             box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355;
-            animation: lightingMove 2s linear infinite;
+            animation: lightingShimmer 2.5s linear infinite;
         }
-        @keyframes lightingMove {
-            0% { box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355; }
-            50% { box-shadow: 0 0 48px 12px #fd4766aa, 0 0 80px 24px #ff8fa3aa; }
-            100% { box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355; }
+        @keyframes lightingShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
         .card-title {
             font-size: 1.25rem;
