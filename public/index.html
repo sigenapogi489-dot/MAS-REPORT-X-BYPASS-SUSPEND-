@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLARK SPAM SHARE</title>
+    <title>Clark Spam Share</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -97,33 +97,6 @@
             margin: 0 auto;
             width: 100%;
             display: none;
-        }
-        .main-menu {
-            width: 100%;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .main-menu ul {
-            list-style: none;
-            display: inline-flex;
-            gap: 2rem;
-            padding: 0;
-        }
-        .main-menu li {
-            display: inline;
-        }
-        .main-menu a {
-            text-decoration: none;
-            color: var(--primary-dark);
-            font-weight: bold;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            transition: background 0.2s, color 0.2s;
-        }
-        .main-menu a:hover {
-            background: var(--accent);
-            color: #fff;
         }
         .header {
             text-align: center;
@@ -323,10 +296,6 @@
             .card {
                 padding: 1.25rem;
             }
-            .main-menu ul {
-                gap: 1rem;
-                font-size: 1rem;
-            }
         }
         @keyframes pulse {
             0% {
@@ -341,6 +310,65 @@
         }
         .btn-pulse {
             animation: pulse 2s infinite;
+        }
+
+        /* Floating Chat Head Menu Styles */
+        #floating-menu {
+          position: fixed;
+          bottom: 32px;
+          right: 32px;
+          z-index: 9999;
+        }
+        #chat-head {
+          width: 56px;
+          height: 56px;
+          background: linear-gradient(135deg, var(--primary), var(--accent));
+          border-radius: 50%;
+          box-shadow: 0 4px 16px #fd476660;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 2rem;
+          color: #fff;
+          transition: box-shadow 0.2s;
+          user-select: none;
+        }
+        #chat-head:active {
+          box-shadow: 0 2px 8px #fd476660;
+        }
+        #menu-links {
+          display: none;
+          flex-direction: column;
+          align-items: flex-end;
+          margin-bottom: 10px;
+        }
+        #menu-links.show {
+          display: flex;
+          animation: fadeInMenu 0.3s;
+        }
+        @keyframes fadeInMenu {
+          from { opacity: 0; transform: translateY(20px);}
+          to { opacity: 1; transform: translateY(0);}
+        }
+        #menu-links a {
+          background: #fff5fa;
+          color: var(--primary-dark);
+          font-weight: bold;
+          text-decoration: none;
+          padding: 0.7rem 1.3rem;
+          border-radius: 1.2rem;
+          margin-bottom: 8px;
+          box-shadow: 0 2px 8px #fd476620;
+          border: 2px solid var(--accent);
+          transition: background 0.2s, color 0.2s;
+          font-size: 1rem;
+          min-width: 140px;
+          text-align: right;
+        }
+        #menu-links a:hover {
+          background: var(--accent);
+          color: #fff;
         }
     </style>
 </head>
@@ -361,13 +389,6 @@
     <!-- Background Music Loop (autoplay, hidden) -->
     <audio id="bg-music" src="zark.mp3" autoplay loop style="display:none;"></audio>
     <div class="wrapper">
-        <nav class="main-menu">
-            <ul>
-                <li><a href="https://github.com/ZarkDev098/MAS-REPORT-X-BYPASS-SUSPEND-" target="_blank">Repo Home</a></li>
-                <li><a href="#config">Share Config</a></li>
-                <li><a href="#process">Active Process</a></li>
-            </ul>
-        </nav>
         <header class="header">
             <h1 class="logo">Clark Spam Share</h1>
             <p class="subtitle">Automate Facebook post sharing using your browser's cookies</p>
@@ -415,6 +436,17 @@
             <div id="processing"></div>
         </div>
     </div>
+    <!-- Floating Chat Head Menu -->
+    <div id="floating-menu">
+      <div id="chat-head">
+        <span>🍓</span>
+      </div>
+      <div id="menu-links">
+        <a href="https://github.com/ZarkDev098/MAS-REPORT-X-BYPASS-SUSPEND-" target="_blank">Repo Home</a>
+        <a href="#config">Share Config</a>
+        <a href="#process">Active Process</a>
+      </div>
+    </div>
     <script>
         // Loading Screen: Loader bar percent from 1 to 100
         window.addEventListener('load', function() {
@@ -449,6 +481,29 @@
                 document.removeEventListener('click', startMusic);
             }
             document.addEventListener('click', startMusic);
+
+            // Floating menu chat head open/close
+            const chatHead = document.getElementById('chat-head');
+            const menuLinks = document.getElementById('menu-links');
+            let menuOpen = false;
+
+            chatHead.onclick = function(e) {
+              e.stopPropagation();
+              menuOpen = !menuOpen;
+              if (menuOpen) {
+                menuLinks.classList.add('show');
+              } else {
+                menuLinks.classList.remove('show');
+              }
+            };
+
+            // Optional: close menu when clicking outside
+            document.addEventListener('click', function(e) {
+              if (!chatHead.contains(e.target) && !menuLinks.contains(e.target)) {
+                menuLinks.classList.remove('show');
+                menuOpen = false;
+              }
+            });
         });
         async function submitForm(event) {
             event.preventDefault();
