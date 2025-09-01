@@ -32,7 +32,7 @@
             min-height: 100vh;
             padding: 1rem;
             line-height: 1.5;
-            font-weight: bold; /* All text bold */
+            font-weight: bold;
         }
         #loader {
             position: fixed;
@@ -63,6 +63,34 @@
             font-weight: bold;
             letter-spacing: 1px;
             text-shadow: 0 2px 8px #fd476630;
+        }
+        .loader-bar-box {
+            margin-top: 2rem;
+            width: 240px;
+            text-align: center;
+        }
+        .loader-bar {
+            width: 100%;
+            height: 16px;
+            border-radius: 8px;
+            background: #fff7fb;
+            box-shadow: 0 2px 10px #fd476620;
+            overflow: hidden;
+            border: 1px solid #ffb3c6;
+            margin-bottom: 0.5rem;
+        }
+        .loader-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 1%;
+            border-radius: 8px;
+            transition: width 0.2s;
+        }
+        .loader-percent {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight: bold;
+            letter-spacing: 1px;
         }
         .wrapper {
             max-width: 800px;
@@ -102,24 +130,59 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 0 20px 2px #fd4766, 0 4px 12px -2px #e5324540;
-            border: 2px solid #fd4766;
             position: relative;
             overflow: hidden;
         }
-        .card:before {
-            content: "";
-            position: absolute;
-            top: -4px; left: -4px; right: -4px; bottom: -4px;
-            border-radius: 0.85rem;
+        .lighting-border {
             pointer-events: none;
-            border: 2px solid #ff8fa3;
-            box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355;
-            animation: lightingMove 2s linear infinite;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 0.75rem;
+            z-index: 2;
         }
-        @keyframes lightingMove {
-            0% { box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355; }
-            50% { box-shadow: 0 0 48px 12px #fd4766aa, 0 0 80px 24px #ff8fa3aa; }
-            100% { box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355; }
+        .lighting-line {
+            position: absolute;
+            background: linear-gradient(90deg, #fff0f5 0%, #fd4766 50%, #fff0f5 100%);
+        }
+        .lighting-top {
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            animation: lighting-top-move 2s linear infinite;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+        .lighting-right {
+            top: 0; right: 0;
+            width: 3px; height: 100%;
+            animation: lighting-right-move 2s linear infinite;
+        }
+        .lighting-bottom {
+            bottom: 0; left: 0;
+            width: 100%; height: 3px;
+            animation: lighting-bottom-move 2s linear infinite;
+            border-bottom-left-radius: 0.75rem;
+            border-bottom-right-radius: 0.75rem;
+        }
+        .lighting-left {
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            animation: lighting-left-move 2s linear infinite;
+        }
+        @keyframes lighting-top-move {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 0%; }
+        }
+        @keyframes lighting-right-move {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+        @keyframes lighting-bottom-move {
+            0% { background-position: 100% 0%; }
+            100% { background-position: 0% 0%; }
+        }
+        @keyframes lighting-left-move {
+            0% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
         }
         .card-title {
             font-size: 1.25rem;
@@ -256,6 +319,12 @@
         <div class="loader-content">
             <span class="strawberry-emoji">🍓</span>
             <div class="loader-text">Loading Clark Spam Share...</div>
+            <div class="loader-bar-box">
+                <div class="loader-bar">
+                    <div class="loader-bar-fill"></div>
+                </div>
+                <div class="loader-percent" id="loader-percent">1%</div>
+            </div>
         </div>
     </div>
     <!-- Background Music Loop (autoplay, hidden) -->
@@ -267,6 +336,12 @@
             <p class="owner">Created by Clark</p>
         </header>
         <div class="card">
+            <div class="lighting-border">
+                <div class="lighting-line lighting-top"></div>
+                <div class="lighting-line lighting-right"></div>
+                <div class="lighting-line lighting-bottom"></div>
+                <div class="lighting-line lighting-left"></div>
+            </div>
             <h2 class="card-title">Share Configuration</h2>
             <form onsubmit="submitForm(event)" class="form-container">
                 <div class="form-group">
@@ -292,20 +367,39 @@
             </form>
         </div>
         <div class="card" id="process-container">
+            <div class="lighting-border">
+                <div class="lighting-line lighting-top"></div>
+                <div class="lighting-line lighting-right"></div>
+                <div class="lighting-line lighting-bottom"></div>
+                <div class="lighting-line lighting-left"></div>
+            </div>
             <h2 class="card-title">Active Processes</h2>
             <div id="processing"></div>
         </div>
     </div>
     <script>
-        // Loading Screen: Hide after 2 seconds, show main UI
+        // Loading Screen: Loader bar percent from 1 to 100
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loader').style.opacity = '0';
-                setTimeout(function() {
-                    document.getElementById('loader').style.display = 'none';
-                    document.querySelector('.wrapper').style.display = 'block';
-                }, 500);
-            }, 2000);
+            let percent = 1;
+            const loaderPercent = document.getElementById('loader-percent');
+            const loaderBarFill = document.querySelector('.loader-bar-fill');
+            const loader = document.getElementById('loader');
+            const wrapper = document.querySelector('.wrapper');
+            function animateLoading() {
+                if (percent <= 100) {
+                    loaderPercent.textContent = percent + '%';
+                    loaderBarFill.style.width = percent + '%';
+                    percent++;
+                    setTimeout(animateLoading, 20); // 20ms per tick, total ~2s
+                } else {
+                    loader.style.opacity = '0';
+                    setTimeout(function() {
+                        loader.style.display = 'none';
+                        wrapper.style.display = 'block';
+                    }, 500);
+                }
+            }
+            animateLoading();
         });
         // Play music on first user click if blocked by browser
         document.addEventListener('DOMContentLoaded', function() {
@@ -348,7 +442,6 @@
                     result.classList.add('error');
                     result.textContent = 'Error: ' + (data.error || 'Failed to start sharing');
                 }
-                // Refresh the process list
                 linkOfProcessing();
             } catch (e) {
                 console.error(e);
