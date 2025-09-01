@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> #fd4766;
+    <title>Clark Spam Share</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #fd4766;
             --primary-dark: #e53245;
             --accent: #ff8fa3;
             --background: #fff0f5;
@@ -26,7 +32,7 @@
             min-height: 100vh;
             padding: 1rem;
             line-height: 1.5;
-            font-weight: bold;
+            font-weight: bold; /* All text bold */
         }
         #loader {
             position: fixed;
@@ -96,92 +102,24 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 0 20px 2px #fd4766, 0 4px 12px -2px #e5324540;
+            border: 2px solid #fd4766;
             position: relative;
             overflow: hidden;
         }
-        /* Lighting line animation around the card */
-        .card .lighting-border {
+        .card:before {
+            content: "";
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border-radius: 0.85rem;
             pointer-events: none;
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 0.75rem;
-            z-index: 2;
+            border: 2px solid #ff8fa3;
+            box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355;
+            animation: lightingMove 2s linear infinite;
         }
-        /* Top line */
-        .card .lighting-top {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: linear-gradient(
-                90deg,
-                #fff0f5 0%,
-                #fd4766 50%,
-                #fff0f5 100%
-            );
-            animation: lighting-top 2s linear infinite;
-            border-top-left-radius: 0.75rem;
-            border-top-right-radius: 0.75rem;
-        }
-        /* Right line */
-        .card .lighting-right {
-            position: absolute;
-            top: 0; right: 0;
-            width: 3px; height: 100%;
-            background: linear-gradient(
-                180deg,
-                #fff0f5 0%,
-                #fd4766 50%,
-                #fff0f5 100%
-            );
-            animation: lighting-right 2s linear infinite;
-            border-top-right-radius: 0.75rem;
-            border-bottom-right-radius: 0.75rem;
-        }
-        /* Bottom line */
-        .card .lighting-bottom {
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 100%; height: 3px;
-            background: linear-gradient(
-                90deg,
-                #fff0f5 0%,
-                #fd4766 50%,
-                #fff0f5 100%
-            );
-            animation: lighting-bottom 2s linear infinite;
-            border-bottom-left-radius: 0.75rem;
-            border-bottom-right-radius: 0.75rem;
-        }
-        /* Left line */
-        .card .lighting-left {
-            position: absolute;
-            top: 0; left: 0;
-            width: 3px; height: 100%;
-            background: linear-gradient(
-                180deg,
-                #fff0f5 0%,
-                #fd4766 50%,
-                #fff0f5 100%
-            );
-            animation: lighting-left 2s linear infinite;
-            border-top-left-radius: 0.75rem;
-            border-bottom-left-radius: 0.75rem;
-        }
-        @keyframes lighting-top {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 0%; }
-        }
-        @keyframes lighting-right {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 0% 100%; }
-        }
-        @keyframes lighting-bottom {
-            0% { background-position: 100% 0%; }
-            100% { background-position: 0% 0%; }
-        }
-        @keyframes lighting-left {
-            0% { background-position: 0% 100%; }
-            100% { background-position: 0% 0%; }
+        @keyframes lightingMove {
+            0% { box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355; }
+            50% { box-shadow: 0 0 48px 12px #fd4766aa, 0 0 80px 24px #ff8fa3aa; }
+            100% { box-shadow: 0 0 32px 8px #fd476655, 0 0 60px 16px #ff8fa355; }
         }
         .card-title {
             font-size: 1.25rem;
@@ -329,12 +267,6 @@
             <p class="owner">Created by Clark</p>
         </header>
         <div class="card">
-            <div class="lighting-border">
-                <div class="lighting-top"></div>
-                <div class="lighting-right"></div>
-                <div class="lighting-bottom"></div>
-                <div class="lighting-left"></div>
-            </div>
             <h2 class="card-title">Share Configuration</h2>
             <form onsubmit="submitForm(event)" class="form-container">
                 <div class="form-group">
@@ -360,12 +292,6 @@
             </form>
         </div>
         <div class="card" id="process-container">
-            <div class="lighting-border">
-                <div class="lighting-top"></div>
-                <div class="lighting-right"></div>
-                <div class="lighting-bottom"></div>
-                <div class="lighting-left"></div>
-            </div>
             <h2 class="card-title">Active Processes</h2>
             <div id="processing"></div>
         </div>
