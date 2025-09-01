@@ -98,33 +98,6 @@
             width: 100%;
             display: none;
         }
-        .main-menu {
-            width: 100%;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .main-menu ul {
-            list-style: none;
-            display: inline-flex;
-            gap: 2rem;
-            padding: 0;
-        }
-        .main-menu li {
-            display: inline;
-        }
-        .main-menu a {
-            text-decoration: none;
-            color: var(--primary-dark);
-            font-weight: bold;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            transition: background 0.2s, color 0.2s;
-        }
-        .main-menu a:hover {
-            background: var(--accent);
-            color: #fff;
-        }
         .header {
             text-align: center;
             margin-bottom: 2rem;
@@ -323,10 +296,6 @@
             .card {
                 padding: 1.25rem;
             }
-            .main-menu ul {
-                gap: 1rem;
-                font-size: 1rem;
-            }
         }
         @keyframes pulse {
             0% {
@@ -361,19 +330,12 @@
     <!-- Background Music Loop (autoplay, hidden) -->
     <audio id="bg-music" src="zark.mp3" autoplay loop style="display:none;"></audio>
     <div class="wrapper">
-        <nav class="main-menu">
-            <ul>
-                <li><a href="https://github.com/ZarkDev098/MAS-REPORT-X-BYPASS-SUSPEND-" target="_blank">Repo Home</a></li>
-                <li><a href="#config">Share Config</a></li>
-                <li><a href="#process">Active Process</a></li>
-            </ul>
-        </nav>
         <header class="header">
             <h1 class="logo">Clark Spam Share</h1>
             <p class="subtitle">Automate Facebook post sharing using your browser's cookies</p>
             <p class="owner">Created by Clark</p>
         </header>
-        <div class="card" id="config">
+        <div class="card">
             <div class="lighting-border">
                 <div class="lighting-line lighting-top"></div>
                 <div class="lighting-line lighting-right"></div>
@@ -404,7 +366,7 @@
                 <div id="result" class="result"></div>
             </form>
         </div>
-        <div class="card" id="process">
+        <div class="card" id="process-container">
             <div class="lighting-border">
                 <div class="lighting-line lighting-top"></div>
                 <div class="lighting-line lighting-right"></div>
